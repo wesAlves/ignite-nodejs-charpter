@@ -9,6 +9,7 @@
         "multer": "^1.4.4",
         "pg": "^8.7.3",
         "swagger-ui-express": "^4.3.0",
+        "tsyringe": "^4.6.0",
         "typeorm": "^0.2.41",
         "uuid": "^8.3.2"
     },
