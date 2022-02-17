@@ -4,7 +4,7 @@ import { router } from "./routes";
 
 import swaggerFile from "./swagger.json";
 
-import "./dataBase";
+import "./database";
 
 const app = express();
 
