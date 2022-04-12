@@ -3,10 +3,6 @@ import { container } from "tsyringe";
 import { CreateSpecificationsUseCase } from "../createSpecifications/CreateSpecificationsUseCase";
 
 class CreateSpecificationsController {
-    static handle: any;
-    constructor(
-        private createSpecificationsUseCase: CreateSpecificationsUseCase
-    ) {}
 
     async handle(request: Request, response: Response) {
         const { name, description } = request.body;

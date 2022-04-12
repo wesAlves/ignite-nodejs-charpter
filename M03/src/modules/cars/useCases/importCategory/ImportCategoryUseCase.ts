@@ -1,6 +1,7 @@
 import fs from "fs";
 import { parse } from "csv-parse";
 import { ICategoriesRepository } from "../../repositories/categories/ICategoriesRepository";
+import { inject, injectable } from "tsyringe";
 ("csv-parse");
 
 interface IImportCategory {
@@ -8,8 +9,11 @@ interface IImportCategory {
     description: string;
 }
 
+@injectable()
 class ImportCategoryUseCase {
-    constructor(private categoriesRepository: ICategoriesRepository) {}
+    constructor(
+        @inject('CategoriesRespository')
+        private categoriesRepository: ICategoriesRepository) {}
 
     loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
         return new Promise((resolve, reject) => {
@@ -48,7 +52,7 @@ class ImportCategoryUseCase {
             const existsCategory = this.categoriesRepository.findByName(name);
 
             if (!existsCategory) {
-                this.categoriesRepository.create({
+                await this.categoriesRepository.create({
                     name,
                     description,
                 });
