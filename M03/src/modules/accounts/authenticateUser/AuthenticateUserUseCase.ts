@@ -42,10 +42,15 @@ class AuthenticateUserUseCase {
             expiresIn: '1d'
         })
 
-        return {
-            user,
-            token
+        const tokenReturn:IReturn = {
+            token,
+            user:{
+                name: user.name,
+                email: user.email
+            }
         }
+
+        return tokenReturn
 
     }
 
